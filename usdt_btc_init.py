@@ -1,11 +1,9 @@
 from datetime import datetime
-from random import randrange
-
 from sqlalchemy import DECIMAL, Column, DateTime, Integer, MetaData, Float
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
-
 from connect import conn
+import pandas as pd
 
 Base = declarative_base()
 
@@ -14,7 +12,6 @@ meta = MetaData(conn).reflect()
 dwhConnection = conn.connect()
 SessionDwh = sessionmaker(bind=dwhConnection)
 sessionDwh = SessionDwh()
-
 
 class BTCTable(Base):
     __tablename__ = 'USDT_BTC'
@@ -34,6 +31,9 @@ class BTCTable(Base):
     def __repr__(self):
         return "<BTCTable(name='%s')>" % (self.name)
 
+
+df = pd.read_csv('~/Documents/DataScience/My_Project/Project_v3_data_engineering/app/csv/polonixinfo.csv', index_col  = 'Unnamed: 0')
+
 def initTable():
     isRun = False
     if not conn.dialect.has_table(conn, 'USDT_BTC'):
@@ -42,28 +42,29 @@ def initTable():
         isRun = True
     return isRun
 
-
-def insertRandomUSDT_BTC():
+def insertRandomUSDT_BTC(name_crt, df):
     prepareData = []
     Base.metadata.create_all(bind=conn)
     prepareData.append(BTCTable(
-        last= randrange(1, 1000),
-        lowestAsk= randrange(1, 1000),
-        highestBid= randrange(1, 1000),
-        percentChange= randrange(1, 1000),
-        baseVolume= randrange(1, 1000),
-        quoteVolume= randrange(1, 1000),
-        isFrozen= randrange(1, 1000),
-        high24hr= randrange(1, 1000),
-        low24hr= randrange(1, 1000)
+        last= float(df.at['last','BTC_BTS']),
+        lowestAsk = float(df.at['lowestAsk','BTC_BTS']),
+        highestBid = float(df.at['highestBid','BTC_BTS']),
+        percentChange = float(df.at['percentChange','BTC_BTS']),
+        baseVolume = float(df.at['baseVolume','BTC_BTS']),
+        quoteVolume = float(df.at['quoteVolume','BTC_BTS']),
+        isFrozen = float(df.at['isFrozen','BTC_BTS']),
+        high24hr = float(df.at['high24hr','BTC_BTS']),
+        low24hr = float(df.at['low24hr','BTC_BTS']),
     ))
     sessionDwh.add_all(prepareData)
     sessionDwh.commit()
     return True
 
-
 initTable()
-insertRandomUSDT_BTC()
+insertRandomUSDT_BTC('BTC_BTS', df)
 
 sessionDwh.close()
 dwhConnection.close()
+
+
+
