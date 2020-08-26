@@ -16,8 +16,8 @@ default_args = {
     'retry_delay': timedelta(minutes=5),
 }
 
-with DAG('dag_insert_usdt_btc', start_date=datetime(2020, 8, 25, 16, 0),
-        end_date = datetime(2020, 8, 25, 16, 30),
+with DAG('dag_insert_usdt_btc', start_date=datetime(2020, 8, 26, 8, 15),
+        end_date = datetime(2020, 8, 26, 8, 35),
         default_args=default_args, schedule_interval=timedelta(minutes=5), catchup = False) as dag:
 
     dag_insert_usdt_btc = BashOperator(task_id='dag_insert_usdt_btc',
