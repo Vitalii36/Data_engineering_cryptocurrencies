@@ -14,7 +14,7 @@ it to csv file.
 
 
 <div align="center">
-    <img align="center" src="https://github.com/Vitalii36//Data_engineering_cryptocurrencies/blob/master/image_readme/Example_1.png?raw=true">
+    <img align="center" src="https://github.com/Vitalii36//Data_engineering_cryptocurrencies/blob/master/img/Schema.png?raw=true">
 </div> 
 
 ## How it work
@@ -28,7 +28,9 @@ is formed into various tables based on cryptocurrency and stored in the database
   work at different intervals
 
 <div align="center">
-    <img align="center" src="https://github.com/Vitalii36//Data_engineering_cryptocurrencies/blob/master/image_readme/Example_1.png?raw=true">
+    <img align="center" src="https://github.com/Vitalii36//Data_engineering_cryptocurrencies/blob/master/img/img_3.png?raw=true">
+    <>
+    <img align="center" src="https://github.com/Vitalii36//Data_engineering_cryptocurrencies/blob/master/img/img_4.png?raw=true">
 </div> 
 
 The green boxes indicate a scheduled run of the pipeline and if the steps ran 
@@ -44,7 +46,8 @@ It’s convenience way to setting schedule and control everything with airflow.
 ## Example visualization
 
 <div align="center">
-    <img align="center" src="https://github.com/Vitalii36//Data_engineering_cryptocurrencies/blob/master/image_readme/Example_1.png?raw=true">
+    <img align="center" src="https://github.com/Vitalii36//Data_engineering_cryptocurrencies/blob/master/img/Example1.png?raw=true">
 </div> 
-## License
+    
+##License
 Format is MIT

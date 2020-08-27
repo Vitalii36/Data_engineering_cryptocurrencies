@@ -21,9 +21,9 @@ with DAG('dag_insert_usdt_btc', start_date=datetime(2020, 8, 26, 8, 15),
         default_args=default_args, schedule_interval=timedelta(minutes=5), catchup = False) as dag:
 
     dag_insert_usdt_btc = BashOperator(task_id='dag_insert_usdt_btc',
-                               bash_command='python ~/Documents/DataScience/My_Project/Project_v3_data_engineering/app/get_unit_polonixapi.py')
+                               bash_command='python ~/Documents/app/get_unit_polonixapi.py')
 
     dag_put_usdt_btc = BashOperator(task_id='dag_put_usdt_btc',
-                                 bash_command='python ~/Documents/DataScience/My_Project/Project_v3_data_engineering/app/usdt_btc_init.py')
+                                 bash_command='python ~/Documents/app/usdt_btc_init.py')
 
     dag_insert_usdt_btc >> dag_put_usdt_btc
