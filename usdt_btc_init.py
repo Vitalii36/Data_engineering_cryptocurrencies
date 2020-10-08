@@ -11,7 +11,7 @@ dwhConnection = conn.connect()
 SessionDwh = sessionmaker(bind=dwhConnection)
 sessionDwh = SessionDwh()
 
-df = pd.read_csv('~/Documents/app/csv/polonixinfo.csv', index_col  = 'Unnamed: 0')
+df = pd.read_csv('~/Documents/DataScience/My_Project/Project_v3_data_engineering/app/csv/polonixinfo.csv', index_col  = 'Unnamed: 0')
 
 def initTable(name_crt):
     isRun = False
